@@ -25,18 +25,18 @@
     ],
     "autoload": {
         "psr-4": {
-            "Lagumen\\Essential\\": "src/"
+            "Lagumen\\LaravelEssential\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Lagumen\\Essential\\Tests\\": "tests/"
+            "Lagumen\\LaravelEssential\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Lagumen\\Essential\\LaravelEssentialServiceProvider"
+                "Lagumen\\LaravelEssential\\LaravelEssentialServiceProvider"
             ]
         }
     },

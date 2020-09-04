@@ -3,13 +3,12 @@
 
 namespace DummyNamespace;
 
-use Illuminate\Validation\Rule;
-use Lagumen\Essential\Interfaces\LaravelEssentialValidationInterface;
+use Lagumen\LaravelEssential\Interfaces\LaravelEssentialValidationInterface;
 
 class DummyClass implements LaravelEssentialValidationInterface
 {
     /**
-     * @param array $data
+     * @param arrayw $data
      * @return array
      */
     public function save(array $data = [])

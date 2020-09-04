@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Lagumen\Essential;
+namespace Lagumen\LaravelEssential\Interfaces;
 
 
 interface LaravelEssentialValidationInterface

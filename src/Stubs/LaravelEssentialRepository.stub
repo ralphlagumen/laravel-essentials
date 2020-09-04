@@ -1,0 +1,15 @@
+<?php
+
+
+namespace DummyNamespace;
+
+use Lagumen\LaravelEssential\Interfaces\LaravelEssentialRepositoryInterface;
+use Lagumen\LaravelEssential\Concerns\LaravelEssentialRepository;
+
+class DummyClass extends LaravelEssentialRepository implements LaravelEssentialRepositoryInterface
+{
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+}

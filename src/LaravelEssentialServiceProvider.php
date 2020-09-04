@@ -1,9 +1,12 @@
 <?php
 
-namespace Lagumen\Essential;
+namespace Lagumen\LaravelEssential;
 
 use Illuminate\Support\ServiceProvider;
-use Lagumen\Essential\Console\LaravelEssentialMakeValidation;
+use Lagumen\LaravelEssential\Console\LaravelEssentialMakeAction;
+use Lagumen\LaravelEssential\Console\LaravelEssentialMakeFilter;
+use Lagumen\LaravelEssential\Console\LaravelEssentialMakeRepository;
+use Lagumen\LaravelEssential\Console\LaravelEssentialMakeValidation;
 
 class LaravelEssentialServiceProvider extends ServiceProvider
 {
@@ -34,6 +37,9 @@ class LaravelEssentialServiceProvider extends ServiceProvider
         // Register commands..
         if ($this->app->runningInConsole()) {
             $this->commands(LaravelEssentialMakeValidation::class);
+            $this->commands(LaravelEssentialMakeRepository::class);
+            $this->commands(LaravelEssentialMakeAction::class);
+            $this->commands(LaravelEssentialMakeFilter::class);
         }
     }
 }

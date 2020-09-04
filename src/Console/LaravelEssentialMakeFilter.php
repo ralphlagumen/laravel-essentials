@@ -4,28 +4,28 @@ namespace Lagumen\LaravelEssential\Console;
 
 use Illuminate\Console\GeneratorCommand;
 
-class LaravelEssentialMakeValidation extends GeneratorCommand
+class LaravelEssentialMakeFilter extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:essential-validation {name}';
+    protected $signature = 'make:essential-filter {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create new validation class';
+    protected $description = 'Create new filter class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Validation';
+    protected $type = 'Filter';
 
     /**
      * Get the stub file for the generator.
@@ -34,7 +34,7 @@ class LaravelEssentialMakeValidation extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/../Stubs/LaravelEssentialValidation.stub';
+        return __DIR__.'/../Stubs/LaravelEssentialFilter.stub';
     }
 
     /**
@@ -45,6 +45,6 @@ class LaravelEssentialMakeValidation extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return config('laravel_essential.validation_namespace');
+        return config('laravel_essential.filter_namespace');
     }
 }

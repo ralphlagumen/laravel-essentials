@@ -1,0 +1,20 @@
+<?php
+
+
+namespace DummyNamespace;
+
+use Lagumen\Essential\Interfaces\LaravelEssentialActionInterface;
+
+class DummyClass implements LaravelEssentialActionInterface
+{
+    /**
+     * Execute action
+     *
+     * @param  array  $data
+     * @return mixed
+     */
+    public function execute(array $data = [])
+    {
+        //
+    }
+}

@@ -1,11 +1,10 @@
 <?php
 
 
-namespace Lagumen\Essential\Tests\Feature;
+namespace Lagumen\LaravelEssential\Tests\Feature;
 
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\File;
-use Lagumen\Essential\Tests\FeatureTest;
+use Lagumen\LaravelEssential\Tests\FeatureTest;
 
 class CommandsTest extends FeatureTest
 {
@@ -17,13 +16,48 @@ class CommandsTest extends FeatureTest
     /** @test */
     public function it_can_generate_validation_class_on_default_namespace()
     {
-        $fooClass = app_path('App/Http/Validation/UserValidation.php');
+        $validationDirectory = app_path('Http/Validations');
+        $validationClass = app_path('Http/Validations/UserValidation.php');
 
         Artisan::call("make:essential-validation UserValidation");
 
-//        $this->assertTrue(File::exists($fooClass));
+        $this->assertDirectoryExists($validationDirectory);
+        $this->assertFileExists($validationClass);
+    }
 
-//        $this->assertDirectoryExists("App\Http\Validations");
-//        $this->assertFileExists("App\Http\Validation\UserValidation.php");
+    /** @test */
+    public function it_can_generate_repository_class_on_default_namespace()
+    {
+        $repositoryDirectory = app_path('Repositories');
+        $repositoryClass = app_path('Repositories/UserRepository.php');
+
+        Artisan::call("make:essential-repository UserRepository");
+
+        $this->assertDirectoryExists($repositoryDirectory);
+        $this->assertFileExists($repositoryClass);
+    }
+
+    /** @test */
+    public function it_can_generate_action_class_on_default_namespace()
+    {
+        $actionDirectory = app_path('Actions');
+        $actionClass = app_path('Actions/UserAction.php');
+
+        Artisan::call("make:essential-action UserAction");
+
+        $this->assertDirectoryExists($actionDirectory);
+        $this->assertFileExists($actionClass);
+    }
+
+    /** @test */
+    public function it_can_generate_filter_class_on_default_namespace()
+    {
+        $filterDirectory = app_path('Filters');
+        $filterClass = app_path('Filters/User/Active.php');
+
+        Artisan::call("make:essential-filter User/Active");
+
+        $this->assertDirectoryExists($filterDirectory);
+        $this->assertFileExists($filterClass);
     }
 }
