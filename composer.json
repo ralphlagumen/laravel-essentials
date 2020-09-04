@@ -1,0 +1,28 @@
+{
+    "name": "ralphlagumen/laravel-essentials",
+    "description": "Laravel package that contains essential utilities in building a small to large scale projects",
+    "type": "library",
+    "require": {
+        "php": "^7.4"
+    },
+    "keywords": [
+        "repository",
+        "validation",
+        "essential",
+        "action",
+        "laravel"
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.3",
+        "mockery/mockery": "^1.4",
+        "orchestra/testbench": "^5.5"
+    },
+    "authors": [
+        {
+            "name": "Ralph Lagumen",
+            "email": "iamralphlagumen@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
