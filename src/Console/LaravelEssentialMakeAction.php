@@ -45,6 +45,6 @@ class LaravelEssentialMakeAction extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return config('laravel_essential.filter_namespace');
+        return config('laravel_essential.action_namespace');
     }
 }
