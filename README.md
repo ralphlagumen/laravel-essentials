@@ -75,6 +75,13 @@ class UsersController extends Controller
         $this->repository = $repository;
     }
     
+    public function index(Request $request)
+    {
+        $users = $this->repository->getAllFilteredUsers($request->all());
+
+        return response()->json($users);
+    }
+    
     public function store(Request $request)
     {
         $user = $this->repository->createUser($request->all());
