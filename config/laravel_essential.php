@@ -11,5 +11,5 @@ return [
     'action_namespace' => 'App\Actions',
 
     // Default namespace and location for filters..
-    'filter_namespace' => 'App\Filters'
+    'filter_namespace' => 'App\Filters',
 ];

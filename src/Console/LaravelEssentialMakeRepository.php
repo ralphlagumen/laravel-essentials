@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Lagumen\LaravelEssential\Console;
-
 
 use Illuminate\Console\GeneratorCommand;
 
@@ -42,7 +40,8 @@ class LaravelEssentialMakeRepository extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)

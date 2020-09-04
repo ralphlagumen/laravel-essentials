@@ -1,11 +1,6 @@
 <?php
 
-
 namespace Lagumen\LaravelEssential\Concerns;
-
-
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 
 trait CanPerformSearch
 {
@@ -18,12 +13,13 @@ trait CanPerformSearch
         return $query->where(function ($builder) use ($value) {
             foreach ($this->searchableColumns as $key => $column) {
                 if (is_array($column)) {
-                   $builder->orWhereHas($key, function ($builder) use ($column, $value) {
-                       foreach ($column as $relationColumn)
-                        $builder->where($relationColumn, "LIKE", "%".$value."%");
-                   });
+                    $builder->orWhereHas($key, function ($builder) use ($column, $value) {
+                        foreach ($column as $relationColumn) {
+                            $builder->where($relationColumn, 'LIKE', '%'.$value.'%');
+                        }
+                    });
                 } else {
-                    $builder->orWhere($builder->qualifyColumn($column), "LIKE", "%".$value."%");
+                    $builder->orWhere($builder->qualifyColumn($column), 'LIKE', '%'.$value.'%');
                 }
             }
         });

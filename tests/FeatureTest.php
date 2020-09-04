@@ -10,11 +10,11 @@ use Orchestra\Testbench\TestCase;
 class FeatureTest extends TestCase
 {
     /**
-     * Setup the test environment
+     * Setup the test environment.
      *
-     * @return  void
+     * @return void
      */
-    protected function setUp() : void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -28,12 +28,13 @@ class FeatureTest extends TestCase
         $this->withFactories(__DIR__.'/Factories');
 
         TestResponse::macro('data', function ($key = null) {
-            if (! $key) {
+            if (!$key) {
                 return $this->original;
             }
             if ($this->original instanceof Collection) {
                 return $this->original->{$key};
             }
+
             return $this->original->getData()['key'];
         });
     }
@@ -54,7 +55,8 @@ class FeatureTest extends TestCase
     /**
      * Get the service providers for the package.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
+     *
      * @return array
      */
     protected function getPackageProviders($app)
@@ -68,7 +70,8 @@ class FeatureTest extends TestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
+     *
      * @return void
      */
     protected function getEnvironmentSetUp($app)

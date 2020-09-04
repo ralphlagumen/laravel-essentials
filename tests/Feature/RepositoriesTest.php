@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Lagumen\LaravelEssential\Tests\Feature;
-
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Lagumen\LaravelEssential\Tests\FeatureTest;
@@ -25,10 +23,10 @@ class RepositoriesTest extends FeatureTest
         $response = $this->postJson(route('users.store'), [
             'name'     => $name = 'Ralph Lagumen',
             'email'    => $email = 'iamralphlagumen@gmail.com',
-            'timezone' => $timezone = 'Asia/Manila'
+            'timezone' => $timezone = 'Asia/Manila',
         ])->assertJsonFragment([
             'name'  => $name,
-            'email' => $email
+            'email' => $email,
         ]);
 
         $user = json_decode($response->getContent());
@@ -36,12 +34,12 @@ class RepositoriesTest extends FeatureTest
         $this->assertDatabaseHas('users', [
             'id'    => $user->id,
             'name'  => $name,
-            'email' => $email
+            'email' => $email,
         ]);
 
         $this->assertDatabaseHas('user_settings', [
             'user_id'  => $user->id,
-            'timezone' => $timezone
+            'timezone' => $timezone,
         ]);
     }
 
@@ -54,7 +52,7 @@ class RepositoriesTest extends FeatureTest
             ->assertJsonFragment([
                 'id'    => $user->id,
                 'name'  => $user->name,
-                'email' => $user->email
+                'email' => $user->email,
             ]);
     }
 }

@@ -10,7 +10,7 @@ class UserValidation implements LaravelEssentialValidationInterface
     {
         return [
             'name'  => 'required|string',
-            'email' => 'required|unique:users,email'
+            'email' => 'required|unique:users,email',
         ];
     }
 
@@ -18,7 +18,7 @@ class UserValidation implements LaravelEssentialValidationInterface
     {
         return [
             'name'  => 'sometimes|string',
-            'email' => 'sometimes|unique:users,email,' . $data['id'] // ignore self
+            'email' => 'sometimes|unique:users,email,'.$data['id'], // ignore self
         ];
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Lagumen\LaravelEssential\Tests\Feature;
-
 
 use Illuminate\Support\Facades\Config;
 use Lagumen\LaravelEssential\Tests\FeatureTest;
@@ -27,7 +25,7 @@ class FiltersTest extends FeatureTest
         $this->getJson(route('users.index', ['search' => 'Lagumen']))
             ->assertJsonFragment([
                 'id'   => $user1->id,
-                'name' => $user1->name
+                'name' => $user1->name,
             ])
             ->assertJsonMissing(['id' => $user2->id])
             ->assertJsonMissing(['id' => $user3->id]);
@@ -45,7 +43,7 @@ class FiltersTest extends FeatureTest
         $this->getJson(route('users.index', ['search' => 'Asia/Manila']))
             ->assertJsonFragment([
                 'id'   => $user1->id,
-                'name' => $user1->name
+                'name' => $user1->name,
             ])
             ->assertJsonMissing(['id' => $user2->id])
             ->assertJsonMissing(['id' => $user3->id]);
@@ -72,7 +70,6 @@ class FiltersTest extends FeatureTest
         $user2 = factory(User::class)->create();
         $user3 = factory(User::class)->create();
 
-
         $response = $this->getJson(route('users.index', ['sort' => 'id|desc']))
             ->assertSuccessful();
 
@@ -88,11 +85,10 @@ class FiltersTest extends FeatureTest
         $user3 = factory(User::class)->create(['name' => 'Sunshine Doe', 'active' => false]);
         $user4 = factory(User::class)->create(['name' => 'Rodrigo Duterte', 'active' => false]);
 
-
         $response = $this->getJson(route('users.index', [
-            'search' => "Doe",
+            'search' => 'Doe',
             'active' => true,
-            'sort'   => 'id|desc'
+            'sort'   => 'id|desc',
         ]))
             ->assertJsonFragment(['id' => $user1->id])
             ->assertJsonFragment(['id' => $user2->id])

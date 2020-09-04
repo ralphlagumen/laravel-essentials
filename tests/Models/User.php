@@ -16,12 +16,12 @@ class User extends Model
      */
     protected $fillable = [
         'name',
-        'email'
+        'email',
     ];
 
     protected $searchableColumns = [
         'name',
-        'setting' => ['timezone']
+        'setting' => ['timezone'],
     ];
 
     public function setting()

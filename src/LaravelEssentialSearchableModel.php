@@ -33,14 +33,15 @@ class LaravelEssentialSearchableModel
     }
 
     /**
-     * This will sort, search depending on the query request given by the front end
+     * This will sort, search depending on the query request given by the front end.
      *
      * for example: sort: id|asc OR search: john doe
      *
      * Searching for column will vary depending on the assigned values inside the $searchableColumns which can be set on model
      * See \App\Models\User, a trait called CanPerformSearch is required to be used on a specified model.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return mixed
      */
     public function build(array $data = [])
@@ -76,16 +77,17 @@ class LaravelEssentialSearchableModel
 
         if ($this->filters) {
             collect($this->filters)->map(function ($filter) {
-                $this->model = (new $filter['filter'])($this->model, $filter['value']);
+                $this->model = (new $filter['filter']())($this->model, $filter['value']);
             });
         }
     }
 
     /**
-     * To check if filter exists, if exists return the filter namespace
+     * To check if filter exists, if exists return the filter namespace.
      *
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return string|array
      */
     protected function findFilters(array $data = [])
@@ -94,19 +96,18 @@ class LaravelEssentialSearchableModel
             $model = class_basename($this->model->getModel());
             $className = $this->formatStringToClassStructure($key);
 
-            if (class_exists(config('laravel_essential.filter_namespace') . "\\{$model}\\{$className}")) {
+            if (class_exists(config('laravel_essential.filter_namespace')."\\{$model}\\{$className}")) {
                 $this->filters[] = [
-                    'filter' => config('laravel_essential.filter_namespace') . "\\{$model}\\{$className}",
-                    'value'  => $data[$key]
+                    'filter' => config('laravel_essential.filter_namespace')."\\{$model}\\{$className}",
+                    'value'  => $data[$key],
                 ];
             }
         });
-
     }
 
     protected function formatStringToClassStructure($string)
     {
-        $arrString = explode("_", $string);
+        $arrString = explode('_', $string);
 
         return collect($arrString)->map(function ($value) {
             return Str::ucfirst($value);

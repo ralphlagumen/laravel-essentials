@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Lagumen\LaravelEssential\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,7 +19,7 @@ class ValidationsTest extends FeatureTest
     {
         $this->postJson(route('users.store'), [
             'name'  => 'Ralph Lagumen',
-            'email' => null
+            'email' => null,
         ])
             ->assertStatus(422)
             ->assertJsonValidationErrors(['email']);
