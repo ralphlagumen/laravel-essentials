@@ -232,7 +232,7 @@ class UsersController extends Controller
   }
 }
 ```
-# Filters
+## Filters
 
 To allow your app to filter, search or sort data, just follow this guides..
 
