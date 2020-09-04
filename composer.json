@@ -1,5 +1,5 @@
 {
-    "name": "ralphlagumen/laravel-essentials",
+    "name": "lagumen/laravel-essentials",
     "description": "Laravel package that contains essential utilities in building a small to large scale projects",
     "type": "library",
     "require": {
@@ -23,6 +23,23 @@
             "email": "iamralphlagumen@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Lagumen\\Essential\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lagumen\\Essential\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lagumen\\Essential\\LaravelEssentialServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

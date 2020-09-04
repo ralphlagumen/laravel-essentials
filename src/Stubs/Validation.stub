@@ -1,0 +1,32 @@
+<?php
+
+
+namespace DummyNamespace;
+
+use Illuminate\Validation\Rule;
+use Lagumen\Essential\Interfaces\LaravelEssentialValidationInterface;
+
+class DummyClass implements LaravelEssentialValidationInterface
+{
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function save(array $data = [])
+    {
+        return [
+            // TODO: Implement save() method.
+        ];
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function update(array $data = [])
+    {
+        return [
+            // TODO: Implement update() method.
+        ];
+    }
+}
