@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Lagumen\LaravelEssential\Tests\Feature;
 
 use Illuminate\Support\Facades\Artisan;
@@ -19,7 +18,7 @@ class CommandsTest extends FeatureTest
         $validationDirectory = app_path('Http/Validations');
         $validationClass = app_path('Http/Validations/UserValidation.php');
 
-        Artisan::call("make:essential-validation UserValidation");
+        Artisan::call('make:essential-validation UserValidation');
 
         $this->assertDirectoryExists($validationDirectory);
         $this->assertFileExists($validationClass);
@@ -31,7 +30,7 @@ class CommandsTest extends FeatureTest
         $repositoryDirectory = app_path('Repositories');
         $repositoryClass = app_path('Repositories/UserRepository.php');
 
-        Artisan::call("make:essential-repository UserRepository");
+        Artisan::call('make:essential-repository UserRepository');
 
         $this->assertDirectoryExists($repositoryDirectory);
         $this->assertFileExists($repositoryClass);
@@ -43,7 +42,7 @@ class CommandsTest extends FeatureTest
         $actionDirectory = app_path('Actions');
         $actionClass = app_path('Actions/UserAction.php');
 
-        Artisan::call("make:essential-action UserAction");
+        Artisan::call('make:essential-action UserAction');
 
         $this->assertDirectoryExists($actionDirectory);
         $this->assertFileExists($actionClass);
@@ -55,7 +54,7 @@ class CommandsTest extends FeatureTest
         $filterDirectory = app_path('Filters');
         $filterClass = app_path('Filters/User/Active.php');
 
-        Artisan::call("make:essential-filter User/Active");
+        Artisan::call('make:essential-filter User/Active');
 
         $this->assertDirectoryExists($filterDirectory);
         $this->assertFileExists($filterClass);

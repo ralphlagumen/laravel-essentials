@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Lagumen\LaravelEssential\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;

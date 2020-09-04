@@ -1,15 +1,14 @@
 <?php
 
-
 namespace Lagumen\LaravelEssential\Interfaces;
-
 
 interface LaravelEssentialActionInterface
 {
     /**
-     * Execute action
+     * Execute action.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return mixed
      */
     public function execute(array $data = []);
