@@ -17,8 +17,8 @@ class UserRepository extends LaravelEssentialRepository implements LaravelEssent
     public function getAllFilteredUsers(array $filters = [])
     {
         return LaravelEssentialSearchableModel::getInstance()
-            ->model($this->model->query())
-            ->build($filters);
+            ->builder($this->model->query())
+            ->filter($filters);
     }
 
     public function createUser(array $data)

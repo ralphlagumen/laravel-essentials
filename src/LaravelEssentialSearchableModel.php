@@ -8,7 +8,7 @@ class LaravelEssentialSearchableModel
 {
     private static $laravelEssentialSearchableModel;
 
-    protected $model;
+    protected $builder;
 
     protected $filters;
 
@@ -44,29 +44,29 @@ class LaravelEssentialSearchableModel
      *
      * @return mixed
      */
-    public function build(array $data = [])
+    public function filter(array $data = [])
     {
         $this->filterQueryBuilder($data);
 
         if (!empty($data['search'])) {
-            $this->model = $this->model->search($data['search']);
+            $this->builder = $this->builder->search($data['search']);
         }
 
         if (!empty($data['sort'])) {
             $sort = explode('|', $data['sort']);
-            $this->model = $this->model->orderBy($this->model->qualifyColumn($sort[0]), $sort[1]);
+            $this->builder = $this->builder->orderBy($this->builder->qualifyColumn($sort[0]), $sort[1]);
         }
 
         if ($this->onlyFirst) {
-            return $this->model->first();
+            return $this->builder->first();
         }
 
-        return empty($data['per_page']) ? $this->model->get() : $this->model->paginate();
+        return empty($data['per_page']) ? $this->builder->get() : $this->builder->paginate();
     }
 
-    public function model($model)
+    public function builder($model)
     {
-        $this->model = $model;
+        $this->builder = $model;
 
         return $this;
     }
@@ -77,7 +77,7 @@ class LaravelEssentialSearchableModel
 
         if ($this->filters) {
             collect($this->filters)->map(function ($filter) {
-                $this->model = (new $filter['filter']())($this->model, $filter['value']);
+                $this->builder = (new $filter['filter']())($this->builder, $filter['value']);
             });
         }
     }
@@ -93,7 +93,7 @@ class LaravelEssentialSearchableModel
     protected function findFilters(array $data = [])
     {
         collect(array_keys($data))->map(function ($key) use (&$filterClass, $data) {
-            $model = class_basename($this->model->getModel());
+            $model = class_basename($this->builder->getModel());
             $className = $this->formatStringToClassStructure($key);
 
             if (class_exists(config('laravel_essential.filter_namespace')."\\{$model}\\{$className}")) {
