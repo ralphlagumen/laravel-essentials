@@ -305,7 +305,7 @@ return LaravelEssentialSearchableModel::getInstance()
           ->filter($filters);
 ```
 
-Or, you can check what I did on the [Repositories](https://github.com/ralphlagumen/laravel-essentials/blob/master/README.md#repositories) above. ;)
+Or, you can check what I did on the [Repositories](https://github.com/ralphlagumen/laravel-essentials#repositories) above. ;)
 
 Now, you can perform filtering, searching and sorting by passing a request parameters to url:
 ```
