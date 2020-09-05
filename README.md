@@ -31,7 +31,7 @@ This will create an Repository Class on `App\Repositories` by default.
 use Lagumen\LaravelEssential\Concerns\LaravelEssentialRepository;
 use Lagumen\LaravelEssential\Interfaces\LaravelEssentialRepositoryInterface;
 use Lagumen\LaravelEssential\LaravelEssentialSearchableModel;
-use Lagumen\LaravelEssential\Tests\Models\User;
+use App\Models\User;
 
 class UserRepository extends LaravelEssentialRepository implements LaravelEssentialRepositoryInterface
 {
@@ -64,7 +64,7 @@ To apply this, just go ahead and initialize your Repository Class to your Contro
 ```
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Lagumen\LaravelEssential\Tests\Repositories\UserRepository;
+use App\Repositories\UserRepository;
 
 class UsersController extends Controller
 {
@@ -132,7 +132,7 @@ To apply this, just go ahead and call the `Validator` Facade inside your control
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
-use Lagumen\LaravelEssential\Tests\Validations\UserValidation;
+use App\Http\Validations\UserValidation;
 
 class UsersController extends Controller
 {
@@ -163,7 +163,7 @@ class UsersController extends Controller
 }
 
 ```
-No, need to create multiple Request Class for a single controller. 
+No need to create multiple Request Class for a single controller. 
 
 ## Actions
 You can create your Action Class by running the following command.
@@ -204,7 +204,7 @@ class UserTypeAction implements LaravelEssentialActionInterface
     }
 }
 ```
-This will help you make your controller more managable and cleaner.
+This will help you, make your controller to be managable and to look cleaner.
 
 ```
 use Illuminate\Http\Request;
