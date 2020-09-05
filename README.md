@@ -234,7 +234,7 @@ class UsersController extends Controller
       }
       
       // Try doing this..
-      app(UserTypeAction::class ['user' => $user])->execute();
+      app(UserTypeAction::class, ['user' => $user])->execute();
       
 
       return response()->json($user);
@@ -296,7 +296,7 @@ class User extends Model
 
     protected $searchableColumns = [
         'name',
-        'setting' => ['timezone'],
+        'setting' => ['timezone'] // this will allow searching of timezone on user setting.
     ];
 
     public function setting()
