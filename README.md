@@ -7,7 +7,7 @@ Inspired by [Laravel Query Filters](https://github.com/ambengers/laravel-query-f
 [![StyleCI](https://github.styleci.io/repos/292729972/shield?branch=master)](https://github.styleci.io/repos/292729972?branch=master)
 
 # Features
-This package allows you to create `Repositories`, `Actions`, `Validations` Class. This package also features search, filtering and sorting functionality for your eloquent models.
+This package allows you to create `Repositories`, `Actions`, `Validations` Class. It also features search, filtering and sorting functionality for your eloquent models.
 
 # Installation
 Run the following command inside your project.
