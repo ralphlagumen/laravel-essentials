@@ -6,6 +6,9 @@ Inspired by [Laravel Query Filters](https://github.com/ambengers/laravel-query-f
 [![Build Status](https://travis-ci.com/ralphlagumen/laravel-essentials.svg?branch=master)](https://travis-ci.com/ralphlagumen/laravel-essentials)
 [![StyleCI](https://github.styleci.io/repos/292729972/shield?branch=master)](https://github.styleci.io/repos/292729972?branch=master)
 
+# Features
+This package allows you to create `Repositories`, `Actions`, `Validations` Class. It also features search, filtering and sorting functionality for your eloquent models.
+
 # Installation
 Run the following command inside your project.
 ```
@@ -31,7 +34,7 @@ This will create an Repository Class on `App\Repositories` by default.
 use Lagumen\LaravelEssential\Concerns\LaravelEssentialRepository;
 use Lagumen\LaravelEssential\Interfaces\LaravelEssentialRepositoryInterface;
 use Lagumen\LaravelEssential\LaravelEssentialSearchableModel;
-use Lagumen\LaravelEssential\Tests\Models\User;
+use App\Models\User;
 
 class UserRepository extends LaravelEssentialRepository implements LaravelEssentialRepositoryInterface
 {
@@ -64,7 +67,7 @@ To apply this, just go ahead and initialize your Repository Class to your Contro
 ```
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Lagumen\LaravelEssential\Tests\Repositories\UserRepository;
+use App\Repositories\UserRepository;
 
 class UsersController extends Controller
 {
@@ -132,7 +135,7 @@ To apply this, just go ahead and call the `Validator` Facade inside your control
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
-use Lagumen\LaravelEssential\Tests\Validations\UserValidation;
+use App\Http\Validations\UserValidation;
 
 class UsersController extends Controller
 {
@@ -154,7 +157,9 @@ class UsersController extends Controller
   
   public function update(Request $request, $id)
   {
-      Validator::make($request->all(), $this->validations->update())->validate();
+      $data = $request->all();
+      
+      Validator::make($data, $this->validations->update($data))->validate();
 
       $user = $this->repository->createUser($request->all());
 
@@ -163,7 +168,7 @@ class UsersController extends Controller
 }
 
 ```
-No, need to create multiple Request Class for a single controller. 
+No need to create multiple Request Class for a single controller. 
 
 ## Actions
 You can create your Action Class by running the following command.
@@ -204,7 +209,7 @@ class UserTypeAction implements LaravelEssentialActionInterface
     }
 }
 ```
-This will help you make your controller more managable and cleaner.
+This will help you, make your controller to be managable and to look cleaner.
 
 ```
 use Illuminate\Http\Request;
@@ -305,10 +310,11 @@ return LaravelEssentialSearchableModel::getInstance()
           ->filter($filters);
 ```
 
-Or, you can check what I did on the [Repositories](https://github.com/ralphlagumen/laravel-essentials/blob/master/README.md#repositories) above. ;)
+Or, you can check what I did on the [Repositories](https://github.com/ralphlagumen/laravel-essentials#repositories) above. ;)
 
 Now, you can perform filtering, searching and sorting by passing a request parameters to url:
 ```
 /users?sort=id|desc&search=John&active=1
 ```
-
+## Package that I used before that is worth mentioning
+[Laravel Fuse](https://github.com/exylon/laravel-fuse)
