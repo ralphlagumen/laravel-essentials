@@ -136,14 +136,18 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Validations\UserValidation;
+use App\Repositories\UserRepository;
 
 class UsersController extends Controller
 {
   protected $validations;
+  
+  protected $repository;
 
-  public function __construct(UserValidation $validation)
+  public function __construct(UserValidation $validation, UserRepository $repository)
   {
       $this->validations = $validation;
+      $this->repository = $repository;
   }
   
   public function store(Request $request)
