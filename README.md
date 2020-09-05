@@ -311,4 +311,5 @@ Now, you can perform filtering, searching and sorting by passing a request param
 ```
 /users?sort=id|desc&search=John&active=1
 ```
-
+## Packages that I used that inspired me to do this
+[Laravel Fuse](https://github.com/exylon/laravel-fuse)
