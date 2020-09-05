@@ -6,6 +6,9 @@ Inspired by [Laravel Query Filters](https://github.com/ambengers/laravel-query-f
 [![Build Status](https://travis-ci.com/ralphlagumen/laravel-essentials.svg?branch=master)](https://travis-ci.com/ralphlagumen/laravel-essentials)
 [![StyleCI](https://github.styleci.io/repos/292729972/shield?branch=master)](https://github.styleci.io/repos/292729972?branch=master)
 
+# Features
+This package allows you to create `Repositories`, `Actions`, `Validations` Class. This package also features search, filtering and sorting functionality for your eloquent models.
+
 # Installation
 Run the following command inside your project.
 ```
@@ -154,7 +157,9 @@ class UsersController extends Controller
   
   public function update(Request $request, $id)
   {
-      Validator::make($request->all(), $this->validations->update())->validate();
+      $data = $request->all();
+      
+      Validator::make($data, $this->validations->update($data))->validate();
 
       $user = $this->repository->createUser($request->all());
 
