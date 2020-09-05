@@ -161,9 +161,9 @@ class UsersController extends Controller
       
       Validator::make($data, $this->validations->update($data))->validate();
 
-      $user = $this->repository->createUser($request->all());
+      $user = $this->repository->updateById($id, $request->all());
 
-      return response()->json($model);
+      return response()->json($user);
   }
 }
 
