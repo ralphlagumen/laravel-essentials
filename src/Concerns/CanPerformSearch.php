@@ -2,6 +2,8 @@
 
 namespace Lagumen\LaravelEssential\Concerns;
 
+use Lagumen\LaravelEssential\LaravelEssentialSearchableModel;
+
 trait CanPerformSearch
 {
     public function scopeSearch($query, $value)
@@ -23,5 +25,12 @@ trait CanPerformSearch
                 }
             }
         });
+    }
+
+    public function scopeFilter($query, $value = [])
+    {
+        return app(LaravelEssentialSearchableModel::class)
+            ->builder($query)
+            ->filter($value);
     }
 }

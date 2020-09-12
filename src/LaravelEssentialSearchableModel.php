@@ -2,6 +2,7 @@
 
 namespace Lagumen\LaravelEssential;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class LaravelEssentialSearchableModel
@@ -11,26 +12,6 @@ class LaravelEssentialSearchableModel
     protected $builder;
 
     protected $filters;
-
-    protected $onlyFirst;
-
-    /**
-     * Protected constructor to prevent creating a new instance of the
-     * singleton via the `new` operator.
-     */
-    private function __construct()
-    {
-        $this->onlyFirst = false;
-    }
-
-    public static function getInstance()
-    {
-        if (null === self::$laravelEssentialSearchableModel) {
-            self::$laravelEssentialSearchableModel = new self();
-        }
-
-        return self::$laravelEssentialSearchableModel;
-    }
 
     /**
      * This will sort, search depending on the query request given by the front end.
@@ -57,16 +38,12 @@ class LaravelEssentialSearchableModel
             $this->builder = $this->builder->orderBy($this->builder->qualifyColumn($sort[0]), $sort[1]);
         }
 
-        if ($this->onlyFirst) {
-            return $this->builder->first();
-        }
-
         return empty($data['per_page']) ? $this->builder->get() : $this->builder->paginate();
     }
 
-    public function builder($model)
+    public function builder(Builder $builder)
     {
-        $this->builder = $model;
+        $this->builder = $builder;
 
         return $this;
     }
@@ -114,10 +91,8 @@ class LaravelEssentialSearchableModel
         })->implode('', '');
     }
 
-    public function onlyFirst()
+    public function destroy()
     {
-        $this->onlyFirst = true;
-
-        return $this;
+        self::$laravelEssentialSearchableModel = NULL;
     }
 }
