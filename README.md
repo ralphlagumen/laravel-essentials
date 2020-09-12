@@ -46,9 +46,7 @@ class UserRepository extends LaravelEssentialRepository implements LaravelEssent
     // We will use this later. ;)
     public function getAllFilteredUsers(array $filters = [])
     {
-        return LaravelEssentialSearchableModel::getInstance()
-            ->builder($this->model->query())
-            ->filter($filters);
+        return $this->model->query()->filter($filters);
     }
 
     public function createUser(array $data)
@@ -306,12 +304,10 @@ class User extends Model
 }
 
 ```
-You also need to call `LaravelEssentialSearchableModel` on either your Controller or Repository. You can do that by doing this.
+You also need to call `filter` scope on your model. You can do that by doing this.
 
 ```
-return LaravelEssentialSearchableModel::getInstance()
-          ->builder($this->model->query())
-          ->filter($filters);
+return User::withTrashed()->filter($arrayOfFilters);
 ```
 
 Or, you can check what I did on the [Repositories](https://github.com/ralphlagumen/laravel-essentials#repositories) above. ;)
