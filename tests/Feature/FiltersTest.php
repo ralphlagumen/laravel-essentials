@@ -4,7 +4,6 @@ namespace Lagumen\LaravelEssential\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
-use Lagumen\LaravelEssential\LaravelEssentialSearchableModel;
 use Lagumen\LaravelEssential\Tests\FeatureTest;
 use Lagumen\LaravelEssential\Tests\Models\User;
 

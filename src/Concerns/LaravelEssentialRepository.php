@@ -4,8 +4,6 @@ namespace Lagumen\LaravelEssential\Concerns;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Log;
 
 abstract class LaravelEssentialRepository
 {

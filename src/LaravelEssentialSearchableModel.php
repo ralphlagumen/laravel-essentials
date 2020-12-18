@@ -93,6 +93,6 @@ class LaravelEssentialSearchableModel
 
     public function destroy()
     {
-        self::$laravelEssentialSearchableModel = NULL;
+        self::$laravelEssentialSearchableModel = null;
     }
 }

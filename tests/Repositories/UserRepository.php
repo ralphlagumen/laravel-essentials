@@ -4,7 +4,6 @@ namespace Lagumen\LaravelEssential\Tests\Repositories;
 
 use Lagumen\LaravelEssential\Concerns\LaravelEssentialRepository;
 use Lagumen\LaravelEssential\Interfaces\LaravelEssentialRepositoryInterface;
-use Lagumen\LaravelEssential\LaravelEssentialSearchableModel;
 use Lagumen\LaravelEssential\Tests\Models\User;
 
 class UserRepository extends LaravelEssentialRepository implements LaravelEssentialRepositoryInterface
