@@ -33,4 +33,12 @@ trait CanPerformSearch
             ->builder($query)
             ->filter($value);
     }
+
+    public function scopeRaw($query, $value = [])
+    {
+        return app(LaravelEssentialSearchableModel::class)
+            ->raw()
+            ->builder($query)
+            ->filter($value);
+    }
 }

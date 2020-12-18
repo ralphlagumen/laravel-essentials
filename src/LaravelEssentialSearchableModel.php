@@ -9,6 +9,8 @@ class LaravelEssentialSearchableModel
 {
     private static $laravelEssentialSearchableModel;
 
+    protected $rawOnly = false;
+
     protected $builder;
 
     protected $filters;
@@ -38,7 +40,18 @@ class LaravelEssentialSearchableModel
             $this->builder = $this->builder->orderBy($this->builder->qualifyColumn($sort[0]), $sort[1]);
         }
 
+        if ($this->rawOnly) {
+            return $this->builder;
+        }
+
         return empty($data['per_page']) ? $this->builder->get() : $this->builder->paginate();
+    }
+
+    public function raw()
+    {
+        $this->rawOnly = true;
+
+        return $this;
     }
 
     public function builder(Builder $builder)
