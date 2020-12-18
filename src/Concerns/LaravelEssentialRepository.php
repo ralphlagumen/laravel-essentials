@@ -165,7 +165,7 @@ abstract class LaravelEssentialRepository
     public function first()
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
-        $model = $this->query->firstOrFail();
+        $model = $this->query->first();
         $this->unsetClauses();
 
         return $model;
@@ -205,7 +205,7 @@ abstract class LaravelEssentialRepository
      *
      * @param int $limit
      *
-     * @return \AdmediaLib\Repository\Eloquent\BaseRepository
+     * @return $this
      */
     public function limit($limit)
     {
@@ -383,13 +383,13 @@ abstract class LaravelEssentialRepository
      */
     public function findByColumn($value, $column = 'slug')
     {
-        try {
-            $item = $this->where($column, $value)->first();
+        $item = $this->where($column, $value)->first();
 
-            return $item;
-        } catch (ModelNotFoundException $exception) {
-            abort(404, 'Model not found.');
-            Log::critical($exception->getMessage());
-        }
+        return $item;
+    }
+
+    public function model()
+    {
+        return $this->model;
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace DummyNamespace;
 
 use Lagumen\LaravelEssential\Interfaces\LaravelEssentialValidationInterface;
@@ -8,7 +7,7 @@ use Lagumen\LaravelEssential\Interfaces\LaravelEssentialValidationInterface;
 class DummyClass implements LaravelEssentialValidationInterface
 {
     /**
-     * @param arrayw $data
+     * @param array $data
      * @return array
      */
     public function save(array $data = [])
